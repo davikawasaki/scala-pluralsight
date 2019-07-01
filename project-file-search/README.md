@@ -5,7 +5,7 @@ Pluralsight [Scala course](https://app.pluralsight.com/library/courses/scala-get
 ## Table of Contents
 
 * [Usage](#usage)
-* Documentation
+* [Documentation](https://github.com/davikawasaki/scala-pluralsight/tree/master/project-file-search/documentation/api)
 
 ## Usage
 
