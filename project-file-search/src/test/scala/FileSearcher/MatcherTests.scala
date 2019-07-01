@@ -6,11 +6,14 @@ import FileSearcher.Matcher
 import org.scalatest._
 
 class MatcherTests extends FlatSpec {
+    val rootPathUsed = "/home/kawasaki/Git/study/scala-pluralsight/project-file-search/"
+    val testFilesRootPath = s"${rootPathUsed}testfiles/"
+
     "Matcher that is passed a file matching the filter" should
     "return a list with that file name" in {
         val matcher = new Matcher("fake", "fakePath")
         val results = matcher.execute()
-        assert(results == List(("fakePath", None)))  // usage of tuples, which can contain until 22 slots that are each strong typed
+        assert(results == List((s"${rootPathUsed}fakePath", None)))  // usage of tuples, which can contain until 22 slots that are each strong typed
     }
 
     "Matcher using a directory containing one file matching the filter" should
@@ -18,7 +21,7 @@ class MatcherTests extends FlatSpec {
         val matcher = new Matcher("txt", new File("testfiles/").getCanonicalPath())
         val results = matcher.execute()
         // assert(new File("testfiles\\").getCanonicalPath() == "/home/kawasaki/Git/study/scala-pluralsight/project-file-search/testfiles\\")
-        assert(results == List(("readme.txt", None)))
+        assert(results == List((s"${testFilesRootPath}readme.txt", None)))
     }
 
     "Matcher that is not passed a root file location" should
@@ -32,7 +35,8 @@ class MatcherTests extends FlatSpec {
         val searchSubDirectories = true
         val matcher = new Matcher("txt", new File("testfiles/").getCanonicalPath(), searchSubDirectories)
         val results = matcher.execute()
-        assert(results == List(("notes.txt", None), ("readme.txt", None)))
+        assert(results == List((s"${testFilesRootPath}innerFolder/notes.txt", None),
+            (s"${testFilesRootPath}readme.txt", None)))
     }
 
     "Matcher given a path that has one file that matches file filter and content filter" should
@@ -40,7 +44,7 @@ class MatcherTests extends FlatSpec {
         val matcher = new Matcher("data", new File(".").getCanonicalPath(), true,
             Some("pluralsight"))
         val matchedFiles = matcher.execute()
-        assert(matchedFiles == List(("pluralsight.data", Some(3))))
+        assert(matchedFiles == List((s"${testFilesRootPath}pluralsight.data", Some(3))))
     }
 
     "Matcher given a path that has no file that matches file filter and content filter" should

@@ -17,4 +17,14 @@ object SearchResultWriter {
       fileWriter.close()
     }
   }
+
+  def writeToConsole(searchResults : List[(String, Option[Int])]) =
+    for((fileName, countOption) <- searchResults)
+      println(getString(fileName, countOption))
+
+  private def getString(fileName : String, countOption : Option[Int]) =
+    countOption match {
+      case Some(count) => s"\t$fileName -> $count"
+      case None => s"\t$fileName"
+    }
 }
