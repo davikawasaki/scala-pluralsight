@@ -4,8 +4,9 @@ Scala courses code that was written throughout Pluralsight courses - list can be
 
 ## Table of Contents
 
-1. [Scala: Getting Started](https://github.com/davikawasaki/scala-pluralsight/tree/master/project-file-search)
-2. [Relevant Links](#relevant-links)
+1. [Scala: The Big Picture](https://github.com/davikawasaki/scala-pluralsight/tree/master/scala-the-big-picture)
+2. [Scala: Getting Started](https://github.com/davikawasaki/scala-pluralsight/tree/master/project-file-search)
+3. [Relevant Links](#relevant-links)
 
 ## Relevant Links
 
